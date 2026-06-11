@@ -1,71 +1,73 @@
-// // import { useState } from 'react'
-// // import reactLogo from './assets/react.svg'
-// // import viteLogo from './assets/vite.svg'
-// // import heroImg from './assets/hero.png'
-// // import './App.css'
-
-// // function App() {
 
 
-// //   return (
-// //     <>
-      
-// //     </>
-// //   )
-// // }
-
-// // export default App
-
-
-// import heroImg from './assets/hero.png'
-// import './App.css'
+// import { BrowserRouter } from 'react-router-dom'
+// import AppRoutes from './routes/AppRoutes'
 
 // function App() {
 //   return (
-//     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      
-//       <div className="max-w-4xl bg-white shadow-lg rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8">
-        
-//         {/* Left Text Section */}
-//         <div className="flex-1 text-center md:text-left">
-//           <h1 className="text-4xl font-bold text-gray-800 mb-4">
-//             Welcome to My Portfolio 🚀
-//           </h1>
-
-//           <p className="text-gray-600 mb-6">
-//             I am a React developer learning Tailwind CSS. This is a simple hero section example using modern UI design.
-//           </p>
-
-//           <button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-xl transition duration-300">
-//             Get Started
-//           </button>
-//         </div>
-
-//         {/* Right Image Section */}
-//         <div className="flex-1 flex justify-center">
-//           <img
-//             src={heroImg}
-//             alt="Hero"
-//             className="w-72 md:w-96 rounded-xl shadow-md"
-//           />
-//         </div>
-
-//       </div>
-//     </div>
+//     <BrowserRouter>
+//       <AppRoutes />
+//     </BrowserRouter>
 //   )
 // }
 
 // export default App
 
-import { BrowserRouter } from 'react-router-dom'
-import AppRoutes from './routes/AppRoutes'
+import Navbar from "./components/navbar";
+import Homepage from "./pages/Homepage";
+import About from "./pages/About";
 
-function App() {
+// Placeholder sections for the remaining nav links
+function PlaceholderSection({ id, title }) {
   return (
-    <BrowserRouter>
-      <AppRoutes />
-    </BrowserRouter>
-  )
+    <section
+      id={id}
+      style={{
+        minHeight: "100vh",
+        background: "#080c11",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        borderTop: "1px solid rgba(212,168,67,0.12)",
+      }}
+    >
+      <div style={{ textAlign: "center" }}>
+        <p style={{
+          fontFamily: "'Inter', sans-serif",
+          fontSize: "10px",
+          fontWeight: 700,
+          color: "#d4a843",
+          letterSpacing: "4px",
+          textTransform: "uppercase",
+          marginBottom: "16px",
+        }}>
+          Coming Soon
+        </p>
+        <h2 style={{
+          fontFamily: "'Playfair Display', serif",
+          fontSize: "clamp(1.8rem, 4vw, 3rem)",
+          fontWeight: 900,
+          color: "#f0ece3",
+          margin: 0,
+        }}>
+          {title}
+        </h2>
+      </div>
+    </section>
+  );
 }
 
-export default App
+export default function App() {
+  return (
+    <>
+      <Navbar />
+
+      {/* All page sections stacked for single-scroll */}
+      <Homepage />
+      <About />
+      <PlaceholderSection id="activities" title="Activities & Experience" />
+      <PlaceholderSection id="itineraries" title="Itineraries & Services" />
+      <PlaceholderSection id="map" title="Map" />
+    </>
+  );
+}
