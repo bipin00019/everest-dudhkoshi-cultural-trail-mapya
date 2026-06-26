@@ -1,21 +1,12 @@
 
 
-// import { BrowserRouter } from 'react-router-dom'
-// import AppRoutes from './routes/AppRoutes'
-
-// function App() {
-//   return (
-//     <BrowserRouter>
-//       <AppRoutes />
-//     </BrowserRouter>
-//   )
-// }
-
-// export default App
-
 import Navbar from "./components/navbar";
 import Homepage from "./pages/Homepage";
 import About from "./pages/About";
+import ActivitiesAndExperiences from "./pages/Activities&Experiences";
+import TrekkingItineraries from "./pages/Trekking_Itineries";
+import Map from "./pages/Map";
+import Footer from "./pages/footer";
 
 // Placeholder sections for the remaining nav links
 function PlaceholderSection({ id, title }) {
@@ -64,10 +55,11 @@ export default function App() {
 
       {/* All page sections stacked for single-scroll */}
       <Homepage />
-      <About />
-      <PlaceholderSection id="activities" title="Activities & Experience" />
-      <PlaceholderSection id="itineraries" title="Itineraries & Services" />
-      <PlaceholderSection id="map" title="Map" />
+      <About id="about" />
+      <ActivitiesAndExperiences id="activities" />
+      <TrekkingItineraries id= "itineraries" />
+      <Map id="map" title="Map" />
+      <Footer />
     </>
   );
 }

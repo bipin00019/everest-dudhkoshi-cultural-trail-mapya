@@ -1,3 +1,5 @@
+import Himalayas from '../../public/images/himalayas.jpg';
+
 export default function About() {
   return (
     <>
@@ -12,7 +14,6 @@ export default function About() {
           background: #080c11;
         }
 
-        /* ── Hero banner that bleeds full width ── */
         .about-banner {
           width: 100%;
           position: relative;
@@ -21,7 +22,6 @@ export default function About() {
           padding: clamp(72px, 12vw, 140px) clamp(24px, 6vw, 96px) clamp(64px, 10vw, 120px);
         }
 
-        /* Full-bleed mountain silhouette at bottom */
         .about-banner::after {
           content: '';
           position: absolute;
@@ -37,19 +37,12 @@ export default function About() {
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: clamp(40px, 6vw, 96px);
-          align-items: center;
+          align-items: start;
           position: relative;
           z-index: 1;
         }
 
-        @media (max-width: 820px) {
-          .about-banner-inner {
-            grid-template-columns: 1fr;
-            gap: 48px;
-          }
-        }
-
-        /* ── Left: Text block ── */
+        /* ── Left text ── */
         .about-eyebrow {
           display: inline-block;
           font-family: 'Inter', sans-serif;
@@ -66,7 +59,7 @@ export default function About() {
 
         .about-title {
           font-family: 'Playfair Display', serif;
-          font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+          font-size: clamp(2rem, 4.5vw, 3.4rem);
           font-weight: 900;
           line-height: 1.06;
           color: #f0ece3;
@@ -85,79 +78,198 @@ export default function About() {
           margin-bottom: 28px;
         }
 
+        /* Section sub-heading inside body */
+        .about-section-label {
+          font-family: 'Inter', sans-serif;
+          font-size: 9px;
+          font-weight: 700;
+          color: rgba(212,168,67,0.7);
+          letter-spacing: 3px;
+          text-transform: uppercase;
+          margin: 0 0 10px 0;
+        }
+
         .about-body {
           font-family: 'Inter', sans-serif;
-          font-size: clamp(0.9rem, 1.2vw, 1rem);
+          font-size: clamp(0.88rem, 1.15vw, 0.97rem);
           font-weight: 300;
           color: rgba(240,236,227,0.68);
-          line-height: 1.9;
-          margin-bottom: 20px;
+          line-height: 1.95;
+          margin: 0 0 18px 0;
         }
-
         .about-body:last-of-type { margin-bottom: 0; }
 
-        /* ── Right: Visual card grid ── */
-        .about-visual {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          grid-template-rows: auto auto;
-          gap: 12px;
+        /* Highlight key phrase */
+        .about-body strong {
+          font-weight: 500;
+          color: rgba(240,236,227,0.88);
         }
 
-        .about-card {
-          background: rgba(255,255,255,0.03);
-          border: 1px solid rgba(212,168,67,0.14);
-          border-radius: 12px;
-          padding: 28px 22px;
-          transition: border-color 0.25s, background 0.25s;
-        }
-        .about-card:hover {
-          border-color: rgba(212,168,67,0.4);
-          background: rgba(212,168,67,0.05);
+        /* Thin divider between paragraphs */
+        .about-inner-rule {
+          width: 100%;
+          height: 1px;
+          background: rgba(212,168,67,0.1);
+          border: none;
+          margin: 24px 0;
         }
 
-        .about-card.wide {
-          grid-column: span 2;
+        /* Stat pills row */
+        .about-stats {
           display: flex;
-          align-items: center;
-          gap: 20px;
-          padding: 22px 28px;
+          flex-wrap: wrap;
+          gap: 10px;
+          margin-top: 28px;
         }
 
-        .card-icon {
-          font-size: 1.8rem;
-          line-height: 1;
-          flex-shrink: 0;
+        .about-stat-pill {
+          display: flex;
+          flex-direction: column;
+          background: rgba(212,168,67,0.07);
+          border: 1px solid rgba(212,168,67,0.2);
+          border-radius: 8px;
+          padding: 12px 18px;
+          min-width: 90px;
         }
 
-        .card-num {
+        .stat-pill-num {
           font-family: 'Playfair Display', serif;
-          font-size: 2.4rem;
+          font-size: 1.5rem;
           font-weight: 900;
           color: #d4a843;
           line-height: 1;
           margin-bottom: 4px;
         }
 
-        .card-label {
+        .stat-pill-label {
           font-family: 'Inter', sans-serif;
-          font-size: 11px;
-          font-weight: 700;
+          font-size: 10px;
+          font-weight: 600;
           color: rgba(240,236,227,0.4);
-          letter-spacing: 2px;
+          letter-spacing: 1.5px;
           text-transform: uppercase;
         }
 
-        .card-desc {
-          font-family: 'Inter', sans-serif;
-          font-size: 13px;
-          font-weight: 300;
-          color: rgba(240,236,227,0.6);
-          line-height: 1.6;
-          margin-top: 4px;
+        /* ── Right photo ── */
+        .about-photo-wrap {
+          position: sticky;
+          top: 100px;
+          width: 100%;
+          aspect-ratio: 4 / 5;
+          border-radius: 16px;
+          overflow: hidden;
         }
 
-        /* ── Values strip — full bleed below ── */
+        .about-photo-wrap::before {
+          content: '';
+          position: absolute;
+          inset: -1px;
+          border-radius: 16px;
+          border: 1.5px solid rgba(212,168,67,0.25);
+          z-index: 2;
+          pointer-events: none;
+        }
+
+        .about-photo-wrap::after {
+          content: '';
+          position: absolute;
+          inset: 14px -14px -14px 14px;
+          border: 1.5px solid rgba(212,168,67,0.15);
+          border-radius: 16px;
+          z-index: 0;
+          pointer-events: none;
+        }
+
+        .about-photo {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center 30%;
+          display: block;
+          border-radius: 16px;
+          position: relative;
+          z-index: 1;
+          transition: transform 0.6s ease;
+        }
+        .about-photo-wrap:hover .about-photo {
+          transform: scale(1.03);
+        }
+
+        .about-photo-vignette {
+          position: absolute;
+          bottom: 0; left: 0; right: 0;
+          height: 45%;
+          background: linear-gradient(to top, rgba(8,12,17,0.6), transparent);
+          border-radius: 0 0 16px 16px;
+          z-index: 2;
+          pointer-events: none;
+        }
+
+        .about-photo-pill {
+          position: absolute;
+          bottom: 20px;
+          left: 20px;
+          z-index: 3;
+          background: rgba(8,12,17,0.72);
+          border: 1px solid rgba(212,168,67,0.35);
+          border-radius: 30px;
+          padding: 7px 14px;
+          display: flex;
+          align-items: center;
+          gap: 7px;
+          backdrop-filter: blur(8px);
+        }
+
+        .about-photo-pill-dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: #d4a843;
+          flex-shrink: 0;
+        }
+
+        .about-photo-pill-text {
+          font-family: 'Inter', sans-serif;
+          font-size: 11px;
+          font-weight: 500;
+          color: rgba(240,236,227,0.85);
+          letter-spacing: 0.5px;
+          white-space: nowrap;
+        }
+
+        /* Elevation badge top-right of photo */
+        .about-photo-badge {
+          position: absolute;
+          top: 18px;
+          right: 18px;
+          z-index: 3;
+          background: rgba(8,12,17,0.72);
+          border: 1px solid rgba(212,168,67,0.3);
+          border-radius: 8px;
+          padding: 8px 13px;
+          backdrop-filter: blur(8px);
+          text-align: right;
+        }
+
+        .badge-num {
+          font-family: 'Playfair Display', serif;
+          font-size: 1.1rem;
+          font-weight: 900;
+          color: #d4a843;
+          line-height: 1;
+        }
+
+        .badge-label {
+          font-family: 'Inter', sans-serif;
+          font-size: 9px;
+          font-weight: 600;
+          color: rgba(240,236,227,0.45);
+          letter-spacing: 1.5px;
+          text-transform: uppercase;
+          margin-top: 3px;
+        }
+
+        /* ── Values strip ── */
         .about-strip {
           width: 100%;
           background: #0a0e15;
@@ -172,13 +284,6 @@ export default function About() {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: clamp(24px, 4vw, 56px);
-        }
-
-        @media (max-width: 640px) {
-          .about-strip-inner {
-            grid-template-columns: 1fr;
-            gap: 32px;
-          }
         }
 
         .strip-item {
@@ -218,61 +323,149 @@ export default function About() {
           border: none;
           margin-bottom: 4px;
         }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+          .about-banner-inner {
+            grid-template-columns: 1fr;
+            gap: 40px;
+          }
+
+          .about-photo-wrap {
+            aspect-ratio: 16 / 9;
+            order: -1;
+            position: static;
+          }
+
+          .about-photo-wrap::after { display: none; }
+
+          .about-strip-inner {
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+          }
+        }
+
+        @media (max-width: 580px) {
+          .about-banner {
+            padding: 52px 20px 80px;
+          }
+
+          .about-photo-wrap {
+            aspect-ratio: 3 / 2;
+            border-radius: 12px;
+          }
+
+          .about-photo { border-radius: 12px; }
+
+          .about-stats {
+            gap: 8px;
+          }
+
+          .about-stat-pill {
+            padding: 10px 14px;
+            min-width: 80px;
+          }
+
+          .about-strip {
+            padding: 36px 20px;
+          }
+
+          .about-strip-inner {
+            grid-template-columns: 1fr;
+            gap: 28px;
+          }
+        }
       `}</style>
 
       <section id="about">
 
-        {/* ── Main banner ── */}
         <div className="about-banner">
           <div className="about-banner-inner">
 
-            {/* Left text */}
+            {/* ── Left: text ── */}
             <div>
-              <span className="about-eyebrow">Our Story</span>
+              <span className="about-eyebrow">About New Trail</span>
+
               <h2 className="about-title">
-                Rooted in the<br />
-                <em>Solukhumbu</em> Valley
+                Everest Dudhkoshi<br />
+                <em>Cultural Trail</em>
               </h2>
+
               <hr className="about-rule" />
+
               <p className="about-body">
-                The Everest Dudhkoshi Cultural Trail winds through the lower reaches of Solukhumbu —
-                a region long overshadowed by the crowds heading to Base Camp. The real story of Nepal
-                lives here: in Sherpa villages, prayer flags strung between rhododendron forests, and
-                the Dudhkoshi River rushing below ancient ridgelines.
+                A new trail, <strong>"Everest Dudhkoshi Cultural Trail"</strong>, has been jointly
+                explored and developed by <strong>Mapya Dudhkoshi Rural Municipality (RM)</strong> and
+                the <strong>Trekking Agencies' Association of Nepal (TAAN)</strong>, with additional
+                support from the NTB/UNDP Sustainable Tourism for Livelihood Recovery Project (STLRP)
+                in the southern part of Solukhumbu district.
               </p>
+
               <p className="about-body">
-                Founded by local guides with deep roots in the region, our mission is to connect
-                travellers with the living culture of Lower Solukhumbu while supporting the
-                communities that have called these mountains home for generations.
+                The recently explored trail not only serves as a short-days trekking destination for
+                observing outstandingly beautiful forests, pasturelands, mountain ranges and peaks —
+                including <strong>Mt. Everest</strong> — and experiencing the rich culture and rituals
+                of <strong>Khaling Rai and Sherpa</strong> communities, but also serves as a gateway
+                to Khumbu and Mera valley treks.
               </p>
+
+              <hr className="about-inner-rule" />
+
+              <p className="about-section-label">The Route</p>
+
+              <p className="about-body">
+                Extending from <strong>941 m at Kaya</strong> in the Dudhkoshi River basin to the
+                <strong> Aran Danda viewpoint at 3,310 m</strong>, the trail traverses through
+                beautiful rural villages of Khaling Rai, Sherpa and many other ethnic communities.
+                It winds through beautifully carved terraced farms, folded green forest hills,
+                colourful flat meadows and some of the largest patches of rhododendron forests.
+              </p>
+
+              <p className="about-body">
+                The trail passes through many strategic high-points offering breathtaking views of
+                forested hills, mountain ranges and at least <strong>29 peaks in 360°</strong> —
+                including <strong>Mt. Everest (8,848.86 m)</strong>, the world's highest summit.
+                Like the Pikey area, Mapya Dudhkoshi Rural Municipality is increasingly becoming a
+                popular destination for cultural experiences, wilderness, adventure sports and
+                mountain panoramas.
+              </p>
+
+              {/* Key stats row */}
+              <div className="about-stats">
+                <div className="about-stat-pill">
+                  <span className="stat-pill-num">941m</span>
+                  <span className="stat-pill-label">Start</span>
+                </div>
+                <div className="about-stat-pill">
+                  <span className="stat-pill-num">3,310m</span>
+                  <span className="stat-pill-label">Viewpoint</span>
+                </div>
+                <div className="about-stat-pill">
+                  <span className="stat-pill-num">29+</span>
+                  <span className="stat-pill-label">Peaks</span>
+                </div>
+                <div className="about-stat-pill">
+                  <span className="stat-pill-num">360°</span>
+                  <span className="stat-pill-label">Panorama</span>
+                </div>
+              </div>
             </div>
 
-            {/* Right card grid */}
-            <div className="about-visual">
-              <div className="about-card">
-                <div className="card-num">12+</div>
-                <div className="card-label">Years guiding</div>
+            {/* ── Right: photo ── */}
+            <div className="about-photo-wrap">
+              <img
+                src={Himalayas}
+                alt="Himalayan landscape — Lower Solukhumbu"
+                className="about-photo"
+              />
+              <div className="about-photo-vignette" />
+              <div className="about-photo-badge">
+                <div className="badge-num">8,848m</div>
+                <div className="badge-label">Mt. Everest</div>
               </div>
-              <div className="about-card">
-                <div className="card-num">3,400m</div>
-                <div className="card-label">Max altitude</div>
-              </div>
-              <div className="about-card">
-                <div className="card-num">8</div>
-                <div className="card-label">Village stays</div>
-              </div>
-              <div className="about-card">
-                <div className="card-num">100%</div>
-                <div className="card-label">Local team</div>
-              </div>
-              <div className="about-card wide">
-                <span className="card-icon">🏔️</span>
-                <div>
-                  <div className="card-label" style={{ marginBottom: "6px" }}>Lower Solukhumbu · Nepal</div>
-                  <div className="card-desc">
-                    A trail less travelled — connecting ancient villages from Salleri to the Dudhkoshi gorge.
-                  </div>
-                </div>
+              <div className="about-photo-pill">
+                <div className="about-photo-pill-dot" />
+                <span className="about-photo-pill-text">Lower Solukhumbu · Nepal</span>
               </div>
             </div>
 
